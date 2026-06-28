@@ -309,7 +309,7 @@ export function Overview() {
 
   return (
     <DashboardLayout>
-      <div className="px-4 md:px-8 pt-8 pb-6 border-b border-white/[0.05]">
+      <div className="px-4 md:px-8 pt-8 pb-6 border-b border-white/[0.05] sticky top-0 z-10 bg-[#0A0A0A]">
         <div className="font-inter text-[11px] text-[#333] tracking-[0.06em] uppercase mb-1">Dashboard</div>
         <h1 className="font-display text-white" style={{ fontSize: '32px', letterSpacing: '-0.045em', lineHeight: 1 }}>Overview</h1>
       </div>
