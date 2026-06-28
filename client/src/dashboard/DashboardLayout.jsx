@@ -116,6 +116,13 @@ export function DashboardLayout({ children, breadcrumb }) {
             </Link>
           )
         })}
+        <button
+          onClick={handleLogout}
+          className="flex flex-col items-center gap-1 p-2 rounded-lg no-underline transition-all text-[#DC2626] hover:text-red-400 bg-transparent border-0 cursor-pointer"
+        >
+          <LogOut size={18} />
+          <span className="font-inter text-[10px] tracking-[-0.01em]">Sign out</span>
+        </button>
       </nav>
     </div>
   )
