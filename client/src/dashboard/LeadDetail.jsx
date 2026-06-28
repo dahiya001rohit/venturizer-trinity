@@ -32,7 +32,7 @@ export function LeadDetail() {
         credentials: 'include'
       })
       if (res.ok) {
-        navigate('/dashboard')
+        navigate('/dashboard/leads')
       }
     } catch (e) {
       console.error(e)
