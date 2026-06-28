@@ -542,6 +542,68 @@ The dashboard has two views, both protected by the JWT cookie:
 |---|---|---|---|
 | `VITE_API_URL` | No | Backend URL (defaults to `http://localhost:4000`) | `https://your-api.railway.app` |
 
+## Database schema
+
+Two tables. Applied by `npm run migrate` (idempotent).
+
+```sql
+-- UUID generation (pgcrypto ships with Railway Postgres)
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+-- Admin accounts (dashboard login)
+CREATE TABLE IF NOT EXISTS admins (
+  id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  email         TEXT UNIQUE NOT NULL,
+  password_hash TEXT NOT NULL,
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+-- One row per lead submission
+CREATE TABLE IF NOT EXISTS leads (
+  id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+
+  type             TEXT NOT NULL CHECK (type IN ('founder', 'investor')),
+
+  -- contact fields lifted out for dashboard display / sort / filter
+  name             TEXT,
+  email            TEXT,
+  phone            TEXT,
+  linkedin         TEXT,
+
+  -- full 12-turn transcript stored as-is
+  answers          JSONB NOT NULL,
+
+  -- scoring output
+  score            INT  NOT NULL CHECK (score >= 0 AND score <= 100),
+  bucket           TEXT NOT NULL CHECK (bucket IN ('hot', 'good', 'maybe', 'low')),
+  breakdown        JSONB NOT NULL,   -- per-dimension scores (auditable)
+  flags            JSONB NOT NULL DEFAULT '[]'::jsonb,  -- mismatch / junk flags
+
+  -- raw AI params stored for debugging and future rescore
+  ai_params        JSONB,
+
+  -- scoring lifecycle: processing → final | provisional → final after rescore
+  score_status     TEXT NOT NULL DEFAULT 'final'
+                     CHECK (score_status IN ('final', 'provisional', 'processing')),
+  needs_ai_rescore BOOLEAN NOT NULL DEFAULT FALSE,
+
+  created_at       TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+-- Indexes for the dashboard's common queries
+CREATE INDEX IF NOT EXISTS idx_leads_bucket     ON leads (bucket);
+CREATE INDEX IF NOT EXISTS idx_leads_type       ON leads (type);
+CREATE INDEX IF NOT EXISTS idx_leads_created_at ON leads (created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_leads_status     ON leads (score_status);
+```
+
+**Design decisions:**
+- `answers` (JSONB) stores the full transcript verbatim — the scoring engine and dashboard both read from it, so nothing is lost if the rubric changes later.
+- `breakdown` (JSONB) stores per-dimension scores at write time — the dashboard never recomputes, just reads.
+- `score_status` tracks the scoring lifecycle: `processing` while the background worker runs, `provisional` if Groq was unavailable, `final` once AI-scored.
+- `needs_ai_rescore` flags provisional leads for the 15-minute background sweep.
+- All four indexes cover the dashboard's common queries: filter by bucket, filter by type, newest-first sort, and provisional sweep.
+
 ## Deploy
 
 **Backend (Railway):**
