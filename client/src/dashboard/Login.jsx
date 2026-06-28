@@ -21,7 +21,7 @@ export function Login() {
   const { user, setUser } = useAuth()
 
   if (user) {
-    return <Navigate to="/overview" replace />
+    return <Navigate to="/dashboard" replace />
   }
 
   async function handleSubmit(e) {
