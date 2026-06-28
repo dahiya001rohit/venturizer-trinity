@@ -231,7 +231,7 @@ export function ChatWidget({ mode = 'full', onClose }) {
             </div>
 
             <div className="shrink-0">
-              <AnimatePresence mode="wait">
+              <AnimatePresence>
                 {showPills && (
                   <motion.div key="pills" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 4 }} transition={{ duration: 0.18 }}>
                     <OptionPills
@@ -374,7 +374,7 @@ function BubbleLayout({ state, dispatch, showPills, showInput, isBranchTurn, cur
             <div ref={bottomRef} />
           </div>
           <div className="shrink-0">
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               {showPills && (
                 <motion.div key="pills" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
                   <OptionPills options={isBranchTurn ? [{label: 'Founder', value: 'Founder'}, {label: 'Investor', value: 'Investor'}] : currentTurn.options} onSelect={isBranchTurn ? handleBranch : handleAnswer} disabled={typing} />
