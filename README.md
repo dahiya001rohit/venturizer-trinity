@@ -172,7 +172,27 @@ npm run dev
 
 > **Note:** `client/src/config.js` defaults `VITE_API_URL` to `http://localhost:4000`. If the backend is running on a different port, set `VITE_API_URL` in `client/.env` to match.
 
-### Smoke test
+### Run the test suite
+
+```bash
+cd server
+npm test
+```
+
+56 plain-Node tests, no framework needed. Covers:
+
+- `positionInBand` — floor, mid-cap (no quantification), ceiling (with quantification)
+- `pickLadderIdx` — weak/mid/strong evidence picks correct ladder rung
+- `bucketFor` — all four bucket thresholds (0, 39/40, 59/60, 79/80, 100)
+- `scoreTranscript` (founder) — hot/low end-to-end, all 6 dimensions present and in range, selection ordering, Gap 1 contradiction (drops score + mismatch flag), Gap 2 junk (floors dimension + junk flag)
+- `scoreTranscript` (investor) — hot end-to-end, selection ordering, all 6 dimensions, unknown type throws
+- `isJunk` — blocklist words, gibberish/keyboard-mash, real answers containing noise words pass
+- `validateField` — required/optional/email/number validators, junk vs hard error distinction
+- `validateTranscript` — valid founder + investor transcripts, unknown type, bad selection, junk field handling
+
+Exit 0 = all pass. Exit 1 = failures (listed with names and messages).
+
+### Pipeline smoke test (requires DB)
 
 ```bash
 cd server
@@ -181,7 +201,7 @@ node test.js --live-ai --no-db # calls Groq API, skips DB
 node test.js --live-ai         # full pipeline including DB insert
 ```
 
-The test exercises every stage: flow → validate → AI params (or fallback) → score → persist → response shape, and prints each stage's output.
+Exercises every stage end-to-end: flow → validate → AI params (or fallback) → score → persist → response shape, and prints each stage's output.
 
 ## API reference
 
@@ -514,7 +534,7 @@ The dashboard has two views, both protected by the JWT cookie:
 | `GROQ_MODEL` | No | Groq model ID (default `llama-3.3-70b-versatile`) | `llama-3.3-70b-versatile` |
 | `REDIS_URL` | No | Redis URL for BullMQ (unused in current in-process worker) | `redis://127.0.0.1:6379` |
 | `SERVER_URL` | No | Public server URL for self-ping keep-alive | `https://your-api.railway.app` |
-| `FRONTEND_URL` | No | Public frontend URL for cors origin | `https://your-api.vercel.app` |
+| `FRONTEND_URL` | No | Deployed frontend origin added to the CORS allowlist. Read directly via `process.env` — not validated by `env.js`. Local origins (`localhost:3000/5173/5174`) are always allowed. If unset, `filter(Boolean)` silently drops it. | `https://trinity-nine.vercel.app` |
 
 **Frontend:**
 
