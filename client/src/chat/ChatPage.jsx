@@ -24,7 +24,7 @@ export function ChatPage() {
           <ArrowLeft size={14} />
           Back
         </Link>
-        <div className="font-display italic" style={{ fontSize: '24px', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #3B82F6, #93C5FD)', WebkitBackgroundClip: 'text', color: 'transparent' }}>Trinity</div>
+        <div className="font-serif italic" style={{ fontSize: '24px', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #3B82F6, #93C5FD)', WebkitBackgroundClip: 'text', color: 'transparent' }}>Trinity</div>
         <div className="font-inter text-[12px] text-white/30 tracking-[-0.01em]">by Venturizer</div>
       </div>
 
@@ -75,7 +75,7 @@ export function ChatPage() {
               background: '#0F0F0F',
               border: '1px solid rgba(255,255,255,0.09)',
               boxShadow: '0 0 0 1px rgba(59,130,246,0.06), 0 40px 100px rgba(0,0,0,0.65), 0 12px 32px rgba(0,0,0,0.4)',
-              height: 'min(740px, calc(100vh - 220px))',
+              height: 'min(600px, calc(100vh - 260px))',
             }}
           >
             {/* Window chrome bar — gives iframe feel */}

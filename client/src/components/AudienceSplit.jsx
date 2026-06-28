@@ -51,7 +51,7 @@ function SpotlightCard({ side, title, tagline, signals, cta, delay }) {
         </div>
 
         <h3
-          className="font-geist font-semibold text-white mb-3"
+          className="font-display text-white mb-3"
           style={{ fontSize: 'clamp(24px, 3.2vw, 34px)', letterSpacing: '-0.04em', lineHeight: 1.0 }}
         >
           {title}
@@ -100,7 +100,7 @@ export function AudienceSplit() {
           className="text-center mb-12"
         >
           <h2
-            className="font-geist font-semibold text-white mb-3"
+            className="font-display text-white mb-3"
             style={{ fontSize: 'clamp(28px, 4vw, 46px)', letterSpacing: '-0.04em', lineHeight: 0.95 }}
           >
             Two paths. One pipeline.

@@ -5,8 +5,8 @@ import { LayoutDashboard, Users, GitBranch, ChevronRight, LogOut, ChevronDown } 
 import { useAuth } from '../AuthContext'
 
 const NAV = [
-  { to: '/overview', label: 'Overview', icon: LayoutDashboard },
-  { to: '/dashboard', label: 'Leads', icon: Users },
+  { to: '/dashboard', label: 'Overview', icon: LayoutDashboard },
+  { to: '/dashboard/leads', label: 'Leads', icon: Users },
 ]
 
 export function DashboardLayout({ children, breadcrumb }) {
@@ -29,13 +29,13 @@ export function DashboardLayout({ children, breadcrumb }) {
     <div className="min-h-screen bg-[#0A0A0A] flex flex-col md:flex-row pb-16 md:pb-0">
       <aside className="w-56 shrink-0 border-r border-white/[0.05] hidden md:flex flex-col sticky top-0 h-screen z-10 bg-[#0A0A0A]">
         <div className="px-5 py-5 border-b border-white/[0.05]">
-          <div className="font-display italic" style={{ fontSize: '24px', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #3B82F6, #93C5FD)', WebkitBackgroundClip: 'text', color: 'transparent' }}>Trinity</div>
+          <div className="font-serif italic" style={{ fontSize: '24px', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #3B82F6, #93C5FD)', WebkitBackgroundClip: 'text', color: 'transparent' }}>Trinity</div>
           <div className="font-inter text-[10px] text-[#333] tracking-[0.04em] uppercase mt-0.5">Venturizer · Internal</div>
         </div>
 
         <nav className="flex-1 px-3 py-4 flex flex-col gap-0.5 overflow-y-auto">
           {NAV.map(({ to, label, icon: Icon }) => {
-            const active = location.pathname === to || (to === '/dashboard' && location.pathname.startsWith('/dashboard'))
+            const active = to === '/dashboard' ? location.pathname === '/dashboard' : location.pathname.startsWith(to)
             return (
               <Link
                 key={to}
@@ -89,7 +89,7 @@ export function DashboardLayout({ children, breadcrumb }) {
       <div className="flex-1 flex flex-col min-w-0">
         {breadcrumb && (
           <div className="h-11 border-b border-white/[0.05] flex items-center px-6 gap-1.5 shrink-0">
-            <Link to="/dashboard" className="font-inter text-[12px] text-[#444] no-underline hover:text-[#999] transition-colors">Leads</Link>
+            <Link to="/dashboard/leads" className="font-inter text-[12px] text-[#444] no-underline hover:text-[#999] transition-colors">Leads</Link>
             <ChevronRight size={11} className="text-white/15" />
             <span className="font-inter text-[12px] text-[#777] tracking-[-0.01em] truncate">{breadcrumb}</span>
           </div>
@@ -102,7 +102,7 @@ export function DashboardLayout({ children, breadcrumb }) {
       {/* Mobile Bottom Navigation */}
       <nav className="md:hidden fixed bottom-0 inset-x-0 h-16 bg-[#0D0D0D] border-t border-white/[0.05] flex items-center justify-around px-2 z-20">
         {NAV.map(({ to, label, icon: Icon }) => {
-          const active = location.pathname === to || (to === '/dashboard' && location.pathname.startsWith('/dashboard'))
+          const active = to === '/dashboard' ? location.pathname === '/dashboard' : location.pathname.startsWith(to)
           return (
             <Link
               key={to}

@@ -47,7 +47,7 @@ export function HowItWorks() {
             <span className="font-inter text-[11px] font-medium text-[#3B82F6] uppercase tracking-[0.06em]">How it works</span>
           </div>
           <h2
-            className="font-geist font-semibold text-white mb-4"
+            className="font-display text-white mb-4"
             style={{ fontSize: 'clamp(32px, 5vw, 52px)', letterSpacing: '-0.04em', lineHeight: 0.95 }}
           >
             Cold inquiry to scored lead.
@@ -98,7 +98,7 @@ export function HowItWorks() {
                     </span>
                   </div>
                   <h3
-                    className="font-geist font-semibold text-white mb-3"
+                    className="font-display text-white mb-3"
                     style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', letterSpacing: '-0.035em', lineHeight: 1.05 }}
                   >
                     {step.title}

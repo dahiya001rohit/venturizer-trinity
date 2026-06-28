@@ -242,12 +242,12 @@ export function ChatWidget({ mode = 'full', onClose }) {
                     <div className="h-3" />
                   </motion.div>
                 )}
-                {showInput && (
-                  <motion.div key="input" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.15 }}>
-                    <ChatInput onSend={handleAnswer} disabled={typing || showPills} placeholder={showPills ? "Please select an option above..." : "Type your answer..."} />
-                  </motion.div>
-                )}
               </AnimatePresence>
+              {showInput && (
+                <div className="bg-[#0A0A0A]">
+                  <ChatInput onSend={handleAnswer} disabled={typing || showPills} placeholder={showPills ? "Please select an option above..." : "Type your answer..."} />
+                </div>
+              )}
             </div>
           </>
         ) : (
@@ -337,7 +337,7 @@ function BubbleLayout({ state, dispatch, showPills, showInput, isBranchTurn, cur
             <span className="font-display text-[#3B82F6]" style={{ fontSize: '11px', letterSpacing: '-0.02em' }}>T</span>
           </div>
           <div>
-            <div className="font-display italic" style={{ fontSize: '20px', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #3B82F6, #93C5FD)', WebkitBackgroundClip: 'text', color: 'transparent' }}>Trinity</div>
+            <div className="font-serif italic" style={{ fontSize: '20px', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #3B82F6, #93C5FD)', WebkitBackgroundClip: 'text', color: 'transparent' }}>Trinity</div>
             <div className="font-inter text-[11px] text-[#555] tracking-[-0.01em]">by Venturizer</div>
           </div>
         </div>
@@ -373,21 +373,22 @@ function BubbleLayout({ state, dispatch, showPills, showInput, isBranchTurn, cur
             )}
             <div ref={bottomRef} />
           </div>
-          <div className="shrink-0">
-            <AnimatePresence>
-              {showPills && (
-                <motion.div key="pills" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
-                  <OptionPills options={isBranchTurn ? [{label: 'Founder', value: 'Founder'}, {label: 'Investor', value: 'Investor'}] : currentTurn.options} onSelect={isBranchTurn ? handleBranch : handleAnswer} disabled={typing} />
-                  <div className="h-3" />
-                </motion.div>
-              )}
+            <div className="shrink-0">
+              <AnimatePresence>
+                {showPills && (
+                  <motion.div key="pills" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
+                    <OptionPills options={isBranchTurn ? [{label: 'Founder', value: 'Founder'}, {label: 'Investor', value: 'Investor'}] : currentTurn.options} onSelect={isBranchTurn ? handleBranch : handleAnswer} disabled={typing} />
+                    <div className="h-3" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              
               {showInput && (
-                <motion.div key="input" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.15 }}>
+                <div className="bg-[#0A0A0A]">
                   <ChatInput onSend={handleAnswer} disabled={typing || showPills} placeholder={showPills ? "Please select an option above..." : "Type your answer..."} />
-                </motion.div>
+                </div>
               )}
-            </AnimatePresence>
-          </div>
+            </div>
         </>
       ) : (
         <div className="flex-1 flex flex-col items-center justify-center p-8 text-center">

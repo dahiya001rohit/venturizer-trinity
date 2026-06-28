@@ -25,12 +25,12 @@
 
   --font-display: "Playfair Display", serif;
   --font-body: "Inter", system-ui, sans-serif;
-  --font-numbers: "Cal Sans", sans-serif;
+  --font-serif: "Playfair Display", serif;
 }
 
 @utility font-display {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 @utility font-body {
@@ -39,8 +39,13 @@
 }
 
 @utility font-geist {
-  font-family: var(--font-numbers);
+  font-family: "Cal Sans", sans-serif;
   font-weight: 600;
+}
+
+@utility font-serif {
+  font-family: var(--font-serif);
+  font-weight: 500;
 }
 
 @utility font-inter {

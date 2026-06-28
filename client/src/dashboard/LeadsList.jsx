@@ -23,6 +23,7 @@ function monthAgo() {
 
 export function LeadsList() {
   const [leads, setLeads] = useState([])
+  const [loading, setLoading] = useState(true)
   const [type, setType] = useState('All')
   const [bucket, setBucket] = useState('All')
   const [provisional, setProvisional] = useState(false)
@@ -34,8 +35,12 @@ export function LeadsList() {
       .then(res => res.json())
       .then(data => {
         if (data.leads) setLeads(data.leads)
+        setLoading(false)
       })
-      .catch(console.error)
+      .catch(err => {
+        console.error(err)
+        setLoading(false)
+      })
   }, [])
 
   const filtered = useMemo(() => {
@@ -81,7 +86,7 @@ export function LeadsList() {
         />
       </div>
 
-      <LeadsTable leads={filtered} />
+      <LeadsTable leads={filtered} loading={loading} />
     </DashboardLayout>
   )
 }

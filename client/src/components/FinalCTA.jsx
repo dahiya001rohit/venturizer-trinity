@@ -36,7 +36,7 @@ export function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.5, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className="font-geist font-semibold text-white mb-6"
+          className="font-display text-white mb-6"
           style={{ fontSize: 'clamp(40px, 7vw, 84px)', letterSpacing: '-0.045em', lineHeight: 0.91 }}
         >
           Stop triaging

@@ -38,7 +38,7 @@ export function Resilience() {
             <span className="font-inter text-[11px] font-medium text-[#F5A623] uppercase tracking-[0.06em]">Built to hold</span>
           </div>
           <h2
-            className="font-geist font-semibold text-white"
+            className="font-display text-white"
             style={{ fontSize: 'clamp(36px, 6vw, 64px)', letterSpacing: '-0.045em', lineHeight: 0.9 }}
           >
             Never blocks.<br />
@@ -79,7 +79,7 @@ export function Resilience() {
               className="bg-[#0A0A0A] px-8 py-10"
             >
               <div
-                className="font-geist font-semibold text-white mb-4"
+                className="font-display text-white mb-4"
                 style={{ fontSize: 'clamp(17px, 2vw, 22px)', letterSpacing: '-0.03em', lineHeight: 1.1 }}
               >
                 {t.heading}

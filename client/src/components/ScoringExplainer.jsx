@@ -77,7 +77,7 @@ export function ScoringExplainer() {
             <span className="font-inter text-[11px] font-medium text-[#3B82F6] uppercase tracking-[0.06em]">Scoring</span>
           </div>
           <h2
-            className="font-geist font-semibold text-white mb-4"
+            className="font-display text-white mb-4"
             style={{ fontSize: 'clamp(32px, 5vw, 52px)', letterSpacing: '-0.04em', lineHeight: 0.95 }}
           >
             Not a black box.

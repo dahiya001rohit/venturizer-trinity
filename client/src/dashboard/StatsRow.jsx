@@ -22,7 +22,7 @@ function Stat({ label, value, color }) {
   return (
     <div className="flex items-baseline gap-2">
       <span
-        className="font-display tabular-nums"
+        className="font-geist tabular-nums"
         style={{ fontSize: '22px', letterSpacing: '-0.04em', color: color || '#FFFFFF', lineHeight: 1 }}
       >
         {value}

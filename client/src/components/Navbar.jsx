@@ -21,12 +21,22 @@ export function Navbar() {
 
   return (
     <>
-      <div className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+      <div 
+        className={`fixed top-0 inset-x-0 h-24 z-40 pointer-events-none transition-opacity duration-500 ${scrolled ? 'opacity-100' : 'opacity-0'}`}
+        style={{
+          background: 'linear-gradient(to bottom, rgba(10,10,10,1) 0%, rgba(10,10,10,0.8) 40%, rgba(10,10,10,0) 100%)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          maskImage: 'linear-gradient(to bottom, black 20%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 20%, transparent 100%)'
+        }}
+      />
+      <div className="fixed top-6 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
         <motion.header
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="pointer-events-auto w-full max-w-[860px] h-12 flex items-center pl-5 pr-2 rounded-full transition-all duration-200"
+          className="pointer-events-auto w-full max-w-[860px] h-16 flex items-center px-7 rounded-full transition-all duration-200"
           style={{
             backgroundColor: scrolled ? 'rgba(16,16,16,0.92)' : 'rgba(22,22,22,0.75)',
             backdropFilter: 'blur(16px)',
@@ -38,8 +48,8 @@ export function Navbar() {
           <nav className="w-full flex items-center justify-between relative">
             <Link
               to="/"
-              className="font-display text-white no-underline shrink-0"
-              style={{ fontSize: '16px', letterSpacing: '-0.04em' }}
+              className="font-serif italic text-white no-underline shrink-0"
+              style={{ fontSize: '18px', letterSpacing: '-0.02em' }}
             >
               Trinity
             </Link>
@@ -52,7 +62,7 @@ export function Navbar() {
                   key={link.label}
                   href={link.href}
                   className="font-inter text-[#999] no-underline whitespace-nowrap transition-colors duration-150 hover:text-white"
-                  style={{ fontSize: '13px', letterSpacing: '-0.01em' }}
+                  style={{ fontSize: '14px', letterSpacing: '-0.01em' }}
                 >
                   {link.label}
                 </a>

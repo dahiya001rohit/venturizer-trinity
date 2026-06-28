@@ -163,7 +163,7 @@ export function Hero() {
 
         <motion.h1
           {...fadeUp(0.12)}
-          className="font-geist font-semibold text-white mb-7"
+          className="font-display text-white mb-7"
           style={{
             fontSize: 'clamp(52px, 9vw, 92px)',
             letterSpacing: '-0.045em',

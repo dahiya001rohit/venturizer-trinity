@@ -21,8 +21,16 @@ function BucketPill({ bucket, status }) {
   )
 }
 
-export function LeadsTable({ leads }) {
+export function LeadsTable({ leads, loading }) {
   const navigate = useNavigate()
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <span className="font-inter text-[13px] text-[#555] tracking-[-0.01em]">Loading...</span>
+      </div>
+    )
+  }
 
   if (leads.length === 0) {
     return (
@@ -54,7 +62,7 @@ export function LeadsTable({ leads }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.2, delay: i * 0.02 }}
-                onClick={() => navigate(`/dashboard/${lead.id}`)}
+                onClick={() => navigate(`/dashboard/leads/${lead.id}`)}
                 className="border-b border-white/[0.03] cursor-pointer group hover:bg-white/[0.02] transition-colors"
               >
                 <td className="px-5 py-3.5">
@@ -70,7 +78,7 @@ export function LeadsTable({ leads }) {
                 </td>
                 <td className="px-5 py-3.5">
                   <span
-                    className="font-display tabular-nums"
+                    className="font-geist tabular-nums"
                     style={{ fontSize: '22px', letterSpacing: '-0.04em', color: BUCKET_COLOR[lead.score_status === 'processing' ? 'maybe' : lead.bucket], lineHeight: 1 }}
                   >
                     {lead.score_status === 'processing' ? '-' : lead.score}

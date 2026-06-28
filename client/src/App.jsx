@@ -61,9 +61,9 @@ export function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signin" element={<Navigate to="/login" replace />} />
-            <Route path="/overview" element={<ProtectedRoute><Overview /></ProtectedRoute>} />
-            <Route path="/dashboard" element={<ProtectedRoute><LeadsList /></ProtectedRoute>} />
-            <Route path="/dashboard/:id" element={<ProtectedRoute><LeadDetail /></ProtectedRoute>} />
+            <Route path="/dashboard" element={<ProtectedRoute><Overview /></ProtectedRoute>} />
+            <Route path="/dashboard/leads" element={<ProtectedRoute><LeadsList /></ProtectedRoute>} />
+            <Route path="/dashboard/leads/:id" element={<ProtectedRoute><LeadDetail /></ProtectedRoute>} />
             <Route path="/chat" element={<ChatPage />} />
           </Routes>
         </div>

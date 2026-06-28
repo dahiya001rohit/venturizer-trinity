@@ -47,7 +47,7 @@ export function Login() {
       }
 
       setUser(data.user)
-      navigate('/overview')
+      navigate('/dashboard')
     } catch (err) {
       setError('Network error, please try again')
       setLoading(false)
@@ -65,7 +65,7 @@ export function Login() {
 
         <div className="relative z-10 flex flex-col h-full px-14 py-14">
           <div>
-            <div className="font-display italic mb-1" style={{ fontSize: '32px', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #3B82F6, #93C5FD)', WebkitBackgroundClip: 'text', color: 'transparent' }}>Trinity</div>
+            <div className="font-serif italic mb-1" style={{ fontSize: '32px', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #3B82F6, #93C5FD)', WebkitBackgroundClip: 'text', color: 'transparent' }}>Trinity</div>
             <div className="font-inter text-[#444] text-[12px] tracking-[-0.01em]">by Venturizer</div>
           </div>
 

@@ -28,7 +28,7 @@ function StatCard({ label, value, sub, color, icon: Icon, delay }) {
         </div>
 
         <div className="z-10">
-          <div className="font-display tabular-nums tracking-tight text-white mb-1" style={{ fontSize: '42px', lineHeight: '1' }}>
+          <div className="font-geist tabular-nums tracking-tight text-white mb-1" style={{ fontSize: '42px', lineHeight: '1' }}>
             {value}
           </div>
           {sub && (
@@ -84,12 +84,12 @@ function BucketBar({ leads }) {
 
         <div className="grid grid-cols-4 gap-3">
           {buckets.map(b => (
-            <div key={b} className="flex flex-col gap-1 p-2 rounded-xl hover:bg-white/[0.03] transition-colors">
+            <div key={b} className="flex flex-col gap-1 p-2 rounded-xl hover:bg-white/[0.03] transition-colors border border-white/[0.05] p-4">
               <div className="flex items-center gap-1.5">
                 <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: BUCKET_COLOR[b], boxShadow: `0 0 8px ${BUCKET_COLOR[b]}80` }} />
                 <span className="font-inter text-[10px] text-[#777] uppercase tracking-wider">{b}</span>
               </div>
-              <span className="font-display tabular-nums text-white" style={{ fontSize: '20px', letterSpacing: '-0.02em' }}>{counts[b]}</span>
+              <span className="font-geist tabular-nums text-white" style={{ fontSize: '20px', letterSpacing: '-0.02em' }}>{counts[b]}</span>
             </div>
           ))}
         </div>
@@ -113,7 +113,7 @@ function RecentHot({ leads, navigate }) {
             <div className="font-inter text-[11px] text-[#555]">Highest priority</div>
           </div>
           <button
-            onClick={() => navigate('/dashboard')}
+            onClick={() => navigate('/dashboard/leads')}
             className="flex items-center gap-1.5 font-inter text-[11px] text-[#666] hover:text-white transition-colors bg-white/[0.02] hover:bg-white/[0.05] border border-white/[0.05] rounded-full px-3 py-1 cursor-pointer"
           >
             View all <ArrowRight size={11} />
@@ -124,7 +124,7 @@ function RecentHot({ leads, navigate }) {
           {hot.map(lead => (
             <div
               key={lead.id}
-              onClick={() => navigate(`/dashboard/${lead.id}`)}
+              onClick={() => navigate(`/dashboard/leads/${lead.id}`)}
               className="flex items-center justify-between px-6 py-4 hover:bg-white/[0.02] transition-colors cursor-pointer group/item"
             >
               <div className="flex items-center gap-3.5 min-w-0">
@@ -136,7 +136,7 @@ function RecentHot({ leads, navigate }) {
                   <div className="font-inter text-[11px] text-[#666] mt-0.5">{lead.type}</div>
                 </div>
               </div>
-              <div className="font-display tabular-nums text-[#F5A623]" style={{ fontSize: '18px' }}>
+              <div className="font-geist tabular-nums text-[#F5A623]" style={{ fontSize: '18px' }}>
                 {lead.score}
               </div>
             </div>
@@ -158,7 +158,7 @@ function NeedsReview({ leads, navigate }) {
     <div className="rounded-[18px] bg-[#161616] border border-white/[0.06] overflow-hidden relative">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.07] to-transparent" />
       <div className="px-5 py-4 border-b border-white/[0.05]">
-        <div className="font-display text-white" style={{ fontSize: '15px', letterSpacing: '-0.03em' }}>Needs attention</div>
+        <div className="font-inter text-[13px] text-[#888] font-medium tracking-wide mb-1 " style={{ fontSize: '15px', letterSpacing: '-0.03em' }}>Needs attention</div>
         <div className="font-inter text-[11px] text-[#444] tracking-[-0.01em]">{provisional.length + mismatch.length} items</div>
       </div>
 
@@ -172,7 +172,7 @@ function NeedsReview({ leads, navigate }) {
             {provisional.slice(0, 3).map(lead => (
               <div
                 key={lead.id}
-                onClick={() => navigate(`/dashboard/${lead.id}`)}
+                onClick={() => navigate(`/dashboard/leads/${lead.id}`)}
                 className="flex items-center justify-between py-1 cursor-pointer group"
               >
                 <span className="font-inter text-[12px] text-[#666] group-hover:text-white transition-colors tracking-[-0.01em]">{lead.name}</span>
@@ -193,7 +193,7 @@ function NeedsReview({ leads, navigate }) {
             {mismatch.map(lead => (
               <div
                 key={lead.id}
-                onClick={() => navigate(`/dashboard/${lead.id}`)}
+                onClick={() => navigate(`/dashboard/leads/${lead.id}`)}
                 className="flex items-center justify-between py-1 cursor-pointer group"
               >
                 <span className="font-inter text-[12px] text-[#666] group-hover:text-white transition-colors tracking-[-0.01em]">{lead.name}</span>
@@ -225,7 +225,7 @@ function TypeSplit({ leads }) {
 
         <div className="flex items-end gap-5 mb-8">
           <div>
-            <div className="font-display tabular-nums text-white leading-none tracking-tight" style={{ fontSize: '48px' }}>{avgScore}</div>
+            <div className="font-geist tabular-nums text-white leading-none tracking-tight" style={{ fontSize: '48px' }}>{avgScore}</div>
           </div>
           <div className="flex-1 pb-1.5">
             <div className="h-1.5 rounded-full bg-white/[0.05] overflow-hidden">
@@ -242,11 +242,11 @@ function TypeSplit({ leads }) {
 
         <div className="grid grid-cols-2 gap-3">
           <div className="rounded-[14px] bg-[#3B82F6]/[0.05] border border-[#3B82F6]/20 p-3 hover:bg-[#3B82F6]/[0.08] transition-colors">
-            <div className="font-display text-[#3B82F6] tabular-nums leading-none mb-1.5" style={{ fontSize: '24px' }}>{founders}</div>
+            <div className="font-geist text-[#3B82F6] tabular-nums leading-none mb-1.5" style={{ fontSize: '24px' }}>{founders}</div>
             <div className="font-inter text-[10px] text-[#3B82F6]/80 uppercase tracking-wider font-medium">Founders</div>
           </div>
           <div className="rounded-[14px] bg-[#22C55E]/[0.05] border border-[#22C55E]/20 p-3 hover:bg-[#22C55E]/[0.08] transition-colors">
-            <div className="font-display text-[#22C55E] tabular-nums leading-none mb-1.5" style={{ fontSize: '24px' }}>{investors}</div>
+            <div className="font-geist text-[#22C55E] tabular-nums leading-none mb-1.5" style={{ fontSize: '24px' }}>{investors}</div>
             <div className="font-inter text-[10px] text-[#22C55E]/80 uppercase tracking-wider font-medium">Investors</div>
           </div>
         </div>
@@ -273,25 +273,16 @@ export function Overview() {
       })
   }, [])
 
-  if (loading) {
+  const renderContent = () => {
+    if (loading) {
+      return <div className="flex items-center justify-center h-64 text-[#555]">Loading...</div>
+    }
+
+    const hot = leads.filter(l => l.bucket === 'hot').length
+    const provisional = leads.filter(l => l.score_status === 'provisional' || l.score_status === 'processing').length
+    const mismatch = leads.filter(l => Array.isArray(l.flags) && l.flags.some(f => (typeof f === 'string' ? f : f.type) === 'mismatch')).length
+
     return (
-      <DashboardLayout>
-        <div className="flex items-center justify-center min-h-screen text-[#555]">Loading...</div>
-      </DashboardLayout>
-    )
-  }
-
-  const hot = leads.filter(l => l.bucket === 'hot').length
-  const provisional = leads.filter(l => l.score_status === 'provisional' || l.score_status === 'processing').length
-  const mismatch = leads.filter(l => Array.isArray(l.flags) && l.flags.some(f => (typeof f === 'string' ? f : f.type) === 'mismatch')).length
-
-  return (
-    <DashboardLayout>
-      <div className="px-4 md:px-8 pt-8 pb-6 border-b border-white/[0.05]">
-        <div className="font-inter text-[11px] text-[#333] tracking-[0.06em] uppercase mb-1">Dashboard</div>
-        <h1 className="font-display text-white" style={{ fontSize: '32px', letterSpacing: '-0.045em', lineHeight: 1 }}>Overview</h1>
-      </div>
-
       <div className="px-4 md:px-8 py-6 flex flex-col gap-5">
         {/* Stat cards row */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -313,6 +304,16 @@ export function Overview() {
           <NeedsReview leads={leads} navigate={navigate} />
         </div>
       </div>
+    )
+  }
+
+  return (
+    <DashboardLayout>
+      <div className="px-4 md:px-8 pt-8 pb-6 border-b border-white/[0.05]">
+        <div className="font-inter text-[11px] text-[#333] tracking-[0.06em] uppercase mb-1">Dashboard</div>
+        <h1 className="font-display text-white" style={{ fontSize: '32px', letterSpacing: '-0.045em', lineHeight: 1 }}>Overview</h1>
+      </div>
+      {renderContent()}
     </DashboardLayout>
   )
 }
