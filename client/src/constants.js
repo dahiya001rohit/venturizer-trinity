@@ -1,5 +1,6 @@
 export const BUCKET_COLOR = {
   hot: '#F5A623',
-  warm: '#D6A623',
-  cold: '#666',
+  good: '#22C55E',
+  maybe: '#3B82F6',
+  low: '#6B7280',
 }
