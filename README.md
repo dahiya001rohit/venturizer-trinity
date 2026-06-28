@@ -4,7 +4,7 @@ Lead intake and scoring system for Venturizer — a chat-based pipeline that qua
 
 ## What it does
 
-Trinity replaces a static intake form with a branching conversation flow. Founders and investors answer 12 questions; the system validates their answers, sends the full transcript to an AI (Groq / Llama 3.3) for per-dimension signal extraction, then runs those signals through a deterministic scoring engine to produce a score, a bucket (hot / good / maybe / low), and a breakdown per dimension. Results land in a protected dashboard where the Venturizer team can review, filter, rescore, and flag leads.
+Trinity replaces a static intake form with a branching conversation flow. Founders and investors answer 12 questions covering context which used to require 16-20 questions; the system validates their answers, sends the full transcript to an AI (Groq / Llama 3.3) for per-dimension signal extraction, then runs those signals through a deterministic scoring engine to produce a score, a bucket (hot / good / maybe / low), and a breakdown per dimension. Results land in a protected dashboard where the Venturizer team can review, filter, rescore, and flag leads.
 
 ## Features
 
@@ -514,6 +514,7 @@ The dashboard has two views, both protected by the JWT cookie:
 | `GROQ_MODEL` | No | Groq model ID (default `llama-3.3-70b-versatile`) | `llama-3.3-70b-versatile` |
 | `REDIS_URL` | No | Redis URL for BullMQ (unused in current in-process worker) | `redis://127.0.0.1:6379` |
 | `SERVER_URL` | No | Public server URL for self-ping keep-alive | `https://your-api.railway.app` |
+| `FRONTEND_URL` | No | Public frontend URL for cors origin | `https://your-api.vercel.app` |
 
 **Frontend:**
 
