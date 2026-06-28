@@ -3,7 +3,7 @@ import { BUCKET_COLOR } from '../constants'
 export function StatsRow({ leads }) {
   const total = leads.length
   const hot = leads.filter(l => l.bucket === 'hot').length
-  const needsReview = leads.filter(l => l.score_status === 'provisional').length
+  const needsReview = leads.filter(l => l.score_status === 'provisional' || (Array.isArray(l.flags) && l.flags.some(f => f.type === 'mismatch'))).length
 
   return (
     <div className="flex items-center gap-6 flex-wrap">
