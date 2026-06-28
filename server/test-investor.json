@@ -1,0 +1,17 @@
+{
+  "type": "investor",
+  "answers": [
+    { "questionId": "intro", "value": "I'm Raj, investing through a fund" },
+    { "questionId": "thesis", "value": "AI and enterprise SaaS" },
+    { "questionId": "stage", "value": "seed" },
+    { "questionId": "stage_detail", "value": "we like to see revenue" },
+    { "questionId": "cheque", "value": "500k to 1m, lead" },
+    { "questionId": "portfolio", "value": "experienced" },
+    { "questionId": "portfolio_detail", "value": "seed stage, early revenue" },
+    { "questionId": "timeline", "value": "now" },
+    { "questionId": "timeline_detail", "value": "just raised a new fund" },
+    { "questionId": "support", "value": "hiring network" },
+    { "questionId": "contact", "value": "raj@fund.com, +1 555-8888, linkedin.com/in/raj-fund" },
+    { "questionId": "alignment", "value": "strong dealflow" }
+  ]
+}

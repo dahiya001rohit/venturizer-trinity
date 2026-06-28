@@ -2,8 +2,12 @@
 node_modules/
 
 # Production build outputs
-dist/
 build/
+*.log
+npm-debug.log*
+.DS_Store
+dist/
+coverage/
 
 # Environment files
 .env
@@ -26,3 +30,4 @@ build/
 Thumbs.db
 
 .agents
+.claude

@@ -1,0 +1,17 @@
+{
+  "type": "founder",
+  "answers": [
+    { "questionId": "intro", "value": "Hi, I'm Sarah. I'm building AI-powered automated QA testing for mobile apps." },
+    { "questionId": "problem", "value": "Testing takes too long" },
+    { "questionId": "mvp_stage", "value": "live" },
+    { "questionId": "mvp_detail", "value": "15 teams" },
+    { "questionId": "traction", "value": "15 users, $1.5k" },
+    { "questionId": "pilots", "value": "none" },
+    { "questionId": "team", "value": "3 team members, tech cofounder yes" },
+    { "questionId": "funding", "value": "pre_seed" },
+    { "questionId": "funding_milestone", "value": "$10k MRR" },
+    { "questionId": "validation", "value": "5 LOIs" },
+    { "questionId": "contact", "value": "sarah@example.com, +1 555-0192, linkedin.com/in/sarah-founder" },
+    { "questionId": "founder_insight", "value": "Copilot approach" }
+  ]
+}
