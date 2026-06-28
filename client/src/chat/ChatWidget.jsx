@@ -142,7 +142,7 @@ export function ChatWidget({ mode = 'full', onClose }) {
   const isSelectTurn = currentTurn?.kind === 'select'
   const isBranchTurn = phase === 'branch'
   const showPills = !typing && (isBranchTurn || isSelectTurn) && phase !== 'result'
-  const showInput = !showPills && phase === 'chat' && phase !== 'result'
+  const showInput = phase !== 'result'
   const progress = phase === 'chat' ? Math.min(turnIndex, flow.length) : 0
   const total = flow.length || 12
   const dimLabels = flowType ? (DIMENSION_LABELS[flowType] || DIMENSION_LABELS.Founder) : DIMENSION_LABELS.Founder
@@ -244,7 +244,7 @@ export function ChatWidget({ mode = 'full', onClose }) {
                 )}
                 {showInput && (
                   <motion.div key="input" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.15 }}>
-                    <ChatInput onSend={handleAnswer} disabled={typing} />
+                    <ChatInput onSend={handleAnswer} disabled={typing || showPills} placeholder={showPills ? "Please select an option above..." : "Type your answer..."} />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -337,8 +337,8 @@ function BubbleLayout({ state, dispatch, showPills, showInput, isBranchTurn, cur
             <span className="font-display text-[#3B82F6]" style={{ fontSize: '11px', letterSpacing: '-0.02em' }}>T</span>
           </div>
           <div>
-            <div className="font-display text-white" style={{ fontSize: '13px', letterSpacing: '-0.03em' }}>Trinity</div>
-            <div className="font-inter text-[10px] text-[#444] tracking-[-0.01em]">by Venturizer</div>
+            <div className="font-display italic" style={{ fontSize: '20px', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #3B82F6, #93C5FD)', WebkitBackgroundClip: 'text', color: 'transparent' }}>Trinity</div>
+            <div className="font-inter text-[11px] text-[#555] tracking-[-0.01em]">by Venturizer</div>
           </div>
         </div>
         {onClose && (
@@ -383,7 +383,7 @@ function BubbleLayout({ state, dispatch, showPills, showInput, isBranchTurn, cur
               )}
               {showInput && (
                 <motion.div key="input" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.15 }}>
-                  <ChatInput onSend={handleAnswer} disabled={typing} />
+                  <ChatInput onSend={handleAnswer} disabled={typing || showPills} placeholder={showPills ? "Please select an option above..." : "Type your answer..."} />
                 </motion.div>
               )}
             </AnimatePresence>

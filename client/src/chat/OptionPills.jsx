@@ -19,10 +19,10 @@ export function OptionPills({ options, onSelect, disabled }) {
           disabled={disabled}
           className="font-inter text-[12px] tracking-[-0.01em] px-3.5 py-2 border cursor-pointer transition-all disabled:opacity-40 disabled:cursor-not-allowed"
           style={{
-            borderRadius: '6px',
-            backgroundColor: '#1E1E1E',
-            border: '1px solid rgba(255,255,255,0.1)',
-            color: '#ccc',
+            borderRadius: '8px',
+            backgroundColor: '#262626',
+            border: '1px solid rgba(255,255,255,0.15)',
+            color: '#eee',
           }}
           onMouseEnter={e => {
             if (!disabled) {

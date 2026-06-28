@@ -15,17 +15,17 @@ export function ChatPage() {
       <div className="absolute inset-x-0 bottom-0 h-64 z-0 pointer-events-none"
         style={{ background: 'linear-gradient(to top, #0A0A0A, transparent)' }} />
 
-      {/* Navbar strip — matches landing pill style */}
-      <div className="relative z-10 flex items-center justify-between px-8 pt-6 pb-0 shrink-0">
+      {/* Sticky Navbar strip with blur */}
+      <div className="sticky top-0 z-50 flex items-center justify-between px-8 py-5 shrink-0 backdrop-blur-md bg-[#0A0A0A]/70 border-b border-white/[0.05]">
         <Link
           to="/"
-          className="flex items-center gap-2 font-inter text-[12px] text-white/30 hover:text-white/70 no-underline transition-colors tracking-[-0.01em]"
+          className="flex items-center gap-2 font-inter text-[13px] text-white/50 hover:text-white no-underline transition-colors tracking-[-0.01em]"
         >
-          <ArrowLeft size={13} />
+          <ArrowLeft size={14} />
           Back
         </Link>
-        <div className="font-display text-white" style={{ fontSize: '15px', letterSpacing: '-0.04em' }}>Trinity</div>
-        <div className="font-inter text-[11px] text-white/20 tracking-[-0.01em]">by Venturizer</div>
+        <div className="font-display italic" style={{ fontSize: '24px', letterSpacing: '-0.02em', background: 'linear-gradient(135deg, #3B82F6, #93C5FD)', WebkitBackgroundClip: 'text', color: 'transparent' }}>Trinity</div>
+        <div className="font-inter text-[12px] text-white/30 tracking-[-0.01em]">by Venturizer</div>
       </div>
 
       {/* Hero text above the card */}
@@ -60,7 +60,7 @@ export function ChatPage() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.55, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="w-full relative"
-          style={{ maxWidth: '760px', width: '80%' }}
+          style={{ maxWidth: '1400px', width: '85%' }}
         >
           {/* Outer glow ring */}
           <div
@@ -75,7 +75,7 @@ export function ChatPage() {
               background: '#0F0F0F',
               border: '1px solid rgba(255,255,255,0.09)',
               boxShadow: '0 0 0 1px rgba(59,130,246,0.06), 0 40px 100px rgba(0,0,0,0.65), 0 12px 32px rgba(0,0,0,0.4)',
-              height: 'min(620px, calc(100vh - 300px))',
+              height: 'min(740px, calc(100vh - 220px))',
             }}
           >
             {/* Window chrome bar — gives iframe feel */}
