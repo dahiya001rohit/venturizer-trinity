@@ -4,7 +4,7 @@ import { ArrowRight, TrendingUp, AlertCircle, Users, Zap } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { API_URL } from '../config'
 import { DashboardLayout } from './DashboardLayout'
-import { BUCKET_COLOR } from '../data/mockLeads'
+import { BUCKET_COLOR } from '../constants'
 
 function StatCard({ label, value, sub, color, icon: Icon, delay }) {
   return (

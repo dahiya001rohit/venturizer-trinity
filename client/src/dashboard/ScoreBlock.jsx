@@ -1,4 +1,4 @@
-import { BUCKET_COLOR } from '../data/mockLeads'
+import { BUCKET_COLOR } from '../constants'
 import { StatusBadge, FlagChip } from './StatusBadge'
 
 export function ScoreBlock({ lead }) {

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { BUCKET_COLOR } from '../data/mockLeads'
+import { BUCKET_COLOR } from '../constants'
 import { StatusBadge, FlagChip } from './StatusBadge'
 
 function BucketPill({ bucket, status }) {

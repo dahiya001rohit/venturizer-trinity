@@ -1,4 +1,4 @@
-import { MOCK_LEADS, BUCKET_COLOR } from '../data/mockLeads'
+import { BUCKET_COLOR } from '../constants'
 
 export function StatsRow({ leads }) {
   const total = leads.length

@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { BUCKET_COLOR } from '../data/mockLeads'
+import { BUCKET_COLOR } from '../constants'
 
 const DIMENSION_COLOR = (score, max) => {
   const pct = score / max
