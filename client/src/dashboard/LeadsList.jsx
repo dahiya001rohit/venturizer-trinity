@@ -47,7 +47,11 @@ export function LeadsList() {
     let list = leads.filter(l => {
       if (type !== 'All' && l.type !== type.toLowerCase()) return false
       if (bucket !== 'All' && l.bucket !== bucket.toLowerCase()) return false
-      if (provisional && l.score_status !== 'provisional') return false
+      if (provisional) {
+        const isProv = l.score_status === 'provisional' || l.score_status === 'processing';
+        const isMis = Array.isArray(l.flags) && l.flags.some(f => (typeof f === 'string' ? f : f.type) === 'mismatch');
+        if (!isProv && !isMis) return false;
+      }
       if (dateRange === 'This week' && parseDate(l.created_at) < weekAgo()) return false
       if (dateRange === 'This month' && parseDate(l.created_at) < monthAgo()) return false
       return true

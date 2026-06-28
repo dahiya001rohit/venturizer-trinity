@@ -30,7 +30,7 @@
 
 @utility font-display {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 @utility font-body {

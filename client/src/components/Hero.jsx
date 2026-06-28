@@ -18,16 +18,16 @@ function ChatPreview() {
       initial={{ opacity: 0, y: 32 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-      className="mt-16 w-full max-w-3xl mx-auto"
+      className="mt-16 w-[80%] mx-auto"
     >
       <div className="rounded-[20px] border border-white/[0.07] bg-[#111] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.7)] relative">
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-        <div className="flex flex-col md:flex-row md:h-[340px]">
-          <div className="w-full md:w-52 shrink-0 border-b md:border-b-0 md:border-r border-white/[0.06] bg-[#0D0D0D] flex flex-col h-48 md:h-auto">
+        <div className="flex flex-col md:flex-row md:h-[480px]">
+          <div className="w-full md:w-64 shrink-0 border-b md:border-b-0 md:border-r border-white/[0.06] bg-[#0D0D0D] flex flex-col h-48 md:h-auto">
             <div className="px-4 py-3 border-b border-white/[0.05] flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-[#3B82F6] animate-pulse" />
-              <span className="font-geist text-[11px] font-medium tracking-[-0.02em] text-white/60">Trinity</span>
+              <span className="font-geist text-[12px] font-medium tracking-[-0.02em] text-white/60">Trinity</span>
             </div>
             <div className="flex-1 overflow-y-auto py-2">
               {[
@@ -41,10 +41,10 @@ function ChatPreview() {
                   className={`px-3 py-2.5 mx-2 rounded-xl mb-1 flex items-center justify-between cursor-default transition-colors ${lead.active ? 'bg-white/[0.06]' : 'hover:bg-white/[0.03]'}`}
                 >
                   <div>
-                    <div className="font-geist text-[11px] font-medium tracking-[-0.02em] text-white/80 leading-none mb-1">{lead.name}</div>
-                    <div className="font-inter text-[10px] text-white/30">{lead.bucket}</div>
+                    <div className="font-geist text-[12px] font-medium tracking-[-0.02em] text-white/80 leading-none mb-1">{lead.name}</div>
+                    <div className="font-inter text-[11px] text-white/30">{lead.bucket}</div>
                   </div>
-                  <div className="font-geist text-[13px] font-semibold tracking-[-0.03em]" style={{ color: lead.color }}>{lead.score}</div>
+                  <div className="font-geist text-[14px] font-semibold tracking-[-0.03em]" style={{ color: lead.color }}>{lead.score}</div>
                 </div>
               ))}
             </div>
@@ -53,12 +53,12 @@ function ChatPreview() {
           <div className="flex-1 flex flex-col">
             <div className="px-4 py-3 border-b border-white/[0.05] flex items-center justify-between">
               <div>
-                <div className="font-geist text-[12px] font-medium tracking-[-0.02em] text-white">Aarav Shah</div>
-                <div className="font-inter text-[10px] text-white/30">Founder · Turn 6 of 12</div>
+                <div className="font-geist text-[13px] font-medium tracking-[-0.02em] text-white">Aarav Shah</div>
+                <div className="font-inter text-[11px] text-white/30">Founder · Turn 6 of 12</div>
               </div>
               <div className="flex items-center gap-1.5 bg-[#F5A623]/10 border border-[#F5A623]/25 rounded-full px-2.5 py-1">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#F5A623]" />
-                <span className="font-inter text-[10px] font-semibold text-[#F5A623] uppercase tracking-[0.05em]">Score 84 · Hot</span>
+                <span className="font-inter text-[11px] font-semibold text-[#F5A623] uppercase tracking-[0.05em]">Score 84 · Hot</span>
               </div>
             </div>
 
@@ -66,7 +66,7 @@ function ChatPreview() {
               {messages.map((m, i) => (
                 <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div
-                    className="max-w-[75%] rounded-[10px] px-3 py-2 font-inter text-[11px] leading-relaxed tracking-[-0.01em]"
+                    className="max-w-[80%] rounded-[10px] px-3.5 py-2.5 font-inter text-[13px] leading-relaxed tracking-[-0.01em]"
                     style={{
                       backgroundColor: m.role === 'bot' ? '#1A1A1A' : 'rgba(59,130,246,0.15)',
                       border: m.role === 'bot' ? '1px solid rgba(255,255,255,0.06)' : '1px solid rgba(59,130,246,0.2)',
@@ -93,8 +93,8 @@ function ChatPreview() {
             </div>
           </div>
 
-          <div className="w-full md:w-44 shrink-0 border-t md:border-t-0 md:border-l border-white/[0.06] bg-[#0D0D0D] p-3 flex flex-col gap-3">
-            <div className="font-inter text-[10px] text-white/30 uppercase tracking-[0.06em]">Breakdown</div>
+          <div className="w-full md:w-56 shrink-0 border-t md:border-t-0 md:border-l border-white/[0.06] bg-[#0D0D0D] p-4 flex flex-col gap-4">
+            <div className="font-inter text-[11px] text-white/30 uppercase tracking-[0.06em]">Breakdown</div>
             {[
               { label: 'Validation', score: 18, max: 25, color: '#F5A623' },
               { label: 'Traction', score: 15, max: 20, color: '#F5A623' },
@@ -104,8 +104,8 @@ function ChatPreview() {
             ].map((d) => (
               <div key={d.label}>
                 <div className="flex justify-between mb-1">
-                  <span className="font-inter text-[10px] text-white/40">{d.label}</span>
-                  <span className="font-inter text-[10px] font-medium" style={{ color: d.color }}>{d.score}/{d.max}</span>
+                  <span className="font-inter text-[11px] text-white/40">{d.label}</span>
+                  <span className="font-inter text-[11px] font-medium" style={{ color: d.color }}>{d.score}/{d.max}</span>
                 </div>
                 <div className="h-[3px] rounded-full bg-white/[0.05] overflow-hidden">
                   <div className="h-full rounded-full" style={{ width: `${(d.score / d.max) * 100}%`, backgroundColor: d.color }} />
@@ -116,7 +116,7 @@ function ChatPreview() {
         </div>
 
         <div className="px-4 py-2.5 border-t border-white/[0.05] flex items-center gap-2">
-          <div className="flex-1 bg-white/[0.04] rounded-full px-3 py-1.5 font-inter text-[11px] text-white/20 tracking-[-0.01em]">
+          <div className="flex-1 bg-white/[0.04] rounded-full px-4 py-2 font-inter text-[12px] text-white/20 tracking-[-0.01em]">
             Continue the conversation…
           </div>
           <div className="w-6 h-6 rounded-full bg-[#3B82F6]/20 flex items-center justify-center">
@@ -237,7 +237,9 @@ export function Hero() {
             </a>
           </motion.div>
         </motion.div>
+      </div>
 
+      <div className="relative z-10 w-full mt-4">
         <ChatPreview />
       </div>
 

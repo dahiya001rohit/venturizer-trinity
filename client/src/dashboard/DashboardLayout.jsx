@@ -94,7 +94,7 @@ export function DashboardLayout({ children, breadcrumb }) {
             <span className="font-inter text-[12px] text-[#777] tracking-[-0.01em] truncate">{breadcrumb}</span>
           </div>
         )}
-        <main className="flex-1 min-w-0 overflow-y-auto">
+        <main className="flex-1 min-w-0">
           {children}
         </main>
       </div>

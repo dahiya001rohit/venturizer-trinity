@@ -172,6 +172,7 @@ async function scoreTranscript(transcript) {
     if (attempt < MAX_RETRIES) await sleep(RETRY_GAP_MS);
   }
 
+  console.error("GROQ FAILURE:", lastErr ? lastErr.message : "scoring failed");
   throw new GroqUnavailable(lastErr ? lastErr.message : "scoring failed");
 }
 
