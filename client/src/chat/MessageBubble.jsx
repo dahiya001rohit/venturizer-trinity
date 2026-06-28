@@ -16,12 +16,12 @@ export function MessageBubble({ role, text, index }) {
         </div>
       )}
       <div
-        className="max-w-[78%] font-inter text-[13px] leading-relaxed tracking-[-0.01em] px-4 py-2.5"
+        className={`font-inter leading-relaxed tracking-[-0.01em] ${isBot ? 'max-w-[85%] text-[14px] px-4 py-3.5' : 'max-w-[78%] text-[13px] px-4 py-2.5'}`}
         style={{
           backgroundColor: isBot ? '#161616' : '#1E1E1E',
           color: isBot ? '#e5e5e5' : '#ffffff',
           borderRadius: isBot ? '20px 20px 20px 4px' : '20px 20px 4px 20px',
-          border: isBot ? '1px solid rgba(255,255,255,0.07)' : '1px solid rgba(239,68,68,0.18)',
+          border: isBot ? '1px solid rgba(255,255,255,0.07)' : '1px solid rgba(255,255,255,0.12)',
         }}
       >
         {text}

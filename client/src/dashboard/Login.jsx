@@ -65,7 +65,7 @@ export function Login() {
 
         <div className="relative z-10 flex flex-col h-full px-14 py-14">
           <div>
-            <div className="font-display text-white mb-1" style={{ fontSize: '22px', letterSpacing: '-0.04em' }}>Trinity</div>
+            <div className="font-display italic mb-1" style={{ fontSize: '28px', letterSpacing: '-0.02em', background: 'linear-gradient(90deg, #fff, #a1a1aa)', WebkitBackgroundClip: 'text', color: 'transparent' }}>Trinity</div>
             <div className="font-inter text-[#444] text-[12px] tracking-[-0.01em]">by Venturizer</div>
           </div>
 

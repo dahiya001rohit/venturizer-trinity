@@ -28,8 +28,8 @@ export function ChatInput({ onSend, disabled, placeholder = 'Type your answer…
         onKeyDown={handleKey}
         disabled={disabled}
         placeholder={placeholder}
-        className="flex-1 font-inter text-[13px] text-white bg-[#161616] border border-white/[0.08] rounded-[10px] px-3.5 py-2.5 outline-none placeholder:text-[#333] tracking-[-0.01em] disabled:opacity-40 transition-all"
-        onFocus={e => e.target.style.boxShadow = '0 0 0 1px rgba(59,130,246,0.4), 0 0 0 3px rgba(59,130,246,0.1)'}
+        className="flex-1 font-inter text-[14px] text-white bg-[#1A1A1A] border border-white/[0.1] rounded-[10px] px-4 py-3 outline-none placeholder:text-[#555] tracking-[-0.01em] disabled:opacity-40 transition-all"
+        onFocus={e => e.target.style.boxShadow = '0 0 0 1px rgba(59,130,246,0.5), 0 0 0 3px rgba(59,130,246,0.15)'}
         onBlur={e => e.target.style.boxShadow = 'none'}
       />
       <motion.button

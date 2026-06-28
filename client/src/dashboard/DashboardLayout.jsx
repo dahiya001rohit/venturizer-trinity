@@ -29,7 +29,7 @@ export function DashboardLayout({ children, breadcrumb }) {
     <div className="min-h-screen bg-[#0A0A0A] flex flex-col md:flex-row pb-16 md:pb-0">
       <aside className="w-56 shrink-0 border-r border-white/[0.05] hidden md:flex flex-col sticky top-0 h-screen z-10 bg-[#0A0A0A]">
         <div className="px-5 py-5 border-b border-white/[0.05]">
-          <div className="font-display text-white" style={{ fontSize: '16px', letterSpacing: '-0.04em' }}>Trinity</div>
+          <div className="font-display italic" style={{ fontSize: '18px', letterSpacing: '-0.02em', background: 'linear-gradient(90deg, #fff, #a1a1aa)', WebkitBackgroundClip: 'text', color: 'transparent' }}>Trinity</div>
           <div className="font-inter text-[10px] text-[#333] tracking-[0.04em] uppercase mt-0.5">Venturizer · Internal</div>
         </div>
 

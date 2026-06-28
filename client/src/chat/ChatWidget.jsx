@@ -142,7 +142,7 @@ export function ChatWidget({ mode = 'full', onClose }) {
   const isSelectTurn = currentTurn?.kind === 'select'
   const isBranchTurn = phase === 'branch'
   const showPills = !typing && (isBranchTurn || isSelectTurn) && phase !== 'result'
-  const showInput = !typing && !showPills && phase === 'chat' && phase !== 'result'
+  const showInput = !showPills && phase === 'chat' && phase !== 'result'
   const progress = phase === 'chat' ? Math.min(turnIndex, flow.length) : 0
   const total = flow.length || 12
   const dimLabels = flowType ? (DIMENSION_LABELS[flowType] || DIMENSION_LABELS.Founder) : DIMENSION_LABELS.Founder

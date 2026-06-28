@@ -2,14 +2,6 @@
 @import "@fontsource/inter/400.css";
 @import "@fontsource/inter/500.css";
 
-@font-face {
-  font-family: "Cal Sans";
-  src: url("/fonts/CalSans-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
 @theme {
   --color-base: #0A0A0A;
   --color-surface: #161616;
@@ -23,13 +15,13 @@
   --color-maybe: #3B82F6;
   --color-low: #6B7280;
 
-  --font-display: "Cal Sans", sans-serif;
+  --font-display: "Playfair Display", serif;
   --font-body: "Inter", system-ui, sans-serif;
 }
 
 @utility font-display {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 @utility font-body {
@@ -38,7 +30,7 @@
 }
 
 @utility font-geist {
-  font-family: "Cal Sans", sans-serif;
+  font-family: var(--font-display);
   font-weight: 600;
 }
 
