@@ -568,3 +568,23 @@ The Postgres pool automatically enables SSL (`rejectUnauthorized: false`) when `
 - **Contradiction detection requires AI.** The deterministic fallback (`textAnalyze.js`) cannot detect contradictions or cross-field inconsistencies — `supports_selection` and `internal_consistency` always default to `true` in fallback mode.
 - **Admin accounts seeded manually.** There is no admin creation UI; accounts must be inserted via `db/seedAdmin.js`. Default credentials are `team@venturizer.com` / `reviewer123`.
 - **No session polling on lead detail.** After triggering a rescore, the dashboard sets the lead to "processing" visually but does not poll for the result — the user must refresh to see the final score.
+
+## Deployment & Architectural Challenges
+
+During the development and deployment of Trinity across Vercel (Frontend) and Railway (Backend), several critical challenges were addressed to ensure production stability:
+
+### 1. Cross-Domain Authentication & Safari ITP
+**The Issue:** Because the frontend was deployed on `vercel.app` and the backend on `up.railway.app`, browsers (especially Safari and Brave) aggressively blocked the JWT authentication cookie as a "Third-Party Tracker". This caused users to instantly log out when refreshing the dashboard, even with `SameSite=None` configured.
+**The Fix:** A Reverse Proxy was implemented using Vercel Edge Network (`client/vercel.json`). The React frontend was updated to make relative API calls (`/api/auth`), which Vercel securely tunnels to the Railway backend. The browser now sees the cookies as First-Party, entirely bypassing cross-site tracking preventions.
+
+### 2. React Router SPA 404s on Vercel
+**The Issue:** React is a Single Page Application. Navigating to `/chat` directly via the browser address bar caused Vercel to look for a physical `/chat` folder on the server, resulting in a 404 error.
+**The Fix:** A URL rewrite was added to `vercel.json` to catch all unmatched routes (`/(.*)`) and serve `/index.html`. This allows React Router to mount and properly handle the URL client-side.
+
+### 3. Railway Monorepo Build Failures (Nixpacks)
+**The Issue:** Railway's Nixpacks builder analyzes the project root to determine the language. Because the Node.js `package.json` was tucked inside the `/server` directory, Nixpacks failed to generate a build plan.
+**The Fix:** Instead of relying on manual UI configuration (which can be flaky), a bridge `package.json` was added to the project root. This file explicitly declares the Node environment and redirects the `install` and `start` commands to execute inside the `server/` directory (`"start": "cd server && npm start"`).
+
+### 4. AI Unpredictability & Rate Limits (Resilience)
+**The Issue:** Relying on the Groq LLM API for real-time scoring introduces the risk of timeouts, rate limits, or malformed JSON responses, which could break the user submission flow and lose valuable lead data.
+**The Fix:** A robust queuing architecture (BullMQ + Redis) was implemented. If the Groq API fails during submission, the lead is safely saved to PostgreSQL with a `score_status: "provisional"`. The user receives an immediate success screen without waiting, and a background worker continuously retries the AI scoring until it succeeds.
