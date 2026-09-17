@@ -1,7 +1,7 @@
 -- Trinity schema — single leads table (chat phase).
 -- Dashboard later only READS this; no new tables needed.
 
--- Enable UUID generation (pgcrypto ships with Railway Postgres).
+-- Enable UUID generation (pgcrypto ships with Supabase Postgres).
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 CREATE TABLE IF NOT EXISTS admins (

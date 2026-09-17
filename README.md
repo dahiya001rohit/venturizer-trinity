@@ -26,13 +26,13 @@ Trinity replaces a static intake form with a branching conversation flow. Founde
 | Layer | Technology |
 |---|---|
 | Backend | Node.js ≥20, Express 5 |
-| Database | PostgreSQL (Railway) via `pg` |
+| Database | PostgreSQL (Supabase) via `pg` |
 | AI | Groq API — Llama 3.3-70b-versatile |
 | Auth | JWT (jsonwebtoken) + bcrypt + httpOnly cookies |
 | Background jobs | In-process worker (`queue.js`) with `setTimeout`; BullMQ + ioredis present as dependencies but not active |
 | Frontend | React 19, Vite 8, Tailwind CSS v4, Framer Motion |
 | UI components | Radix UI, shadcn, lucide-react |
-| Deploy | Vercel (frontend) + Railway (backend + Postgres) |
+| Deploy | Vercel (frontend) + Railway (backend) + Supabase (Postgres) |
 
 ## Project structure
 
@@ -115,7 +115,7 @@ Trinity/
 ### Prerequisites
 
 - Node.js ≥ 20
-- PostgreSQL database (Railway recommended)
+- PostgreSQL database (Supabase recommended)
 - Groq API key — [console.groq.com](https://console.groq.com)
 - Redis (optional — present in deps but not required for the in-process worker)
 
@@ -547,7 +547,7 @@ The dashboard has two views, both protected by the JWT cookie:
 Two tables. Applied by `npm run migrate` (idempotent).
 
 ```sql
--- UUID generation (pgcrypto ships with Railway Postgres)
+-- UUID generation (pgcrypto ships with Supabase Postgres)
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 -- Admin accounts (dashboard login)
@@ -614,7 +614,7 @@ CREATE INDEX IF NOT EXISTS idx_leads_status     ON leads (score_status);
 4. After first deploy, run the migration once via the Railway shell: `node db/migrate.js`
 5. Seed the admin account: `node db/seedAdmin.js`
 
-The Postgres pool automatically enables SSL (`rejectUnauthorized: false`) when `NODE_ENV=production`, which is required for Railway's hosted Postgres.
+The Postgres pool always enables SSL (`rejectUnauthorized: false`), since Supabase is a remote host in every environment — local included.
 
 **Frontend (Vercel):**
 

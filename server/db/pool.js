@@ -4,15 +4,16 @@ const { env } = require("../src/env");
 /**
  * Single shared Postgres connection pool.
  *
- * Railway provides DATABASE_URL. We use a pool (not single clients) so the
- * stateless backend can handle concurrent /submit requests cleanly at scale.
+ * Supabase provides DATABASE_URL (pooler endpoint). We use a pool (not single
+ * clients) so the stateless backend can handle concurrent /submit requests
+ * cleanly at scale.
  *
  * Import `pool` anywhere you need to query. Do NOT create new Pools elsewhere.
  */
 const pool = new Pool({
   connectionString: env.DATABASE_URL,
-  // Railway Postgres requires SSL in production; locally it usually doesn't.
-  ssl: env.NODE_ENV === "production" ? { rejectUnauthorized: false } : undefined,
+  // Supabase is always remote, so always TLS — not just in production.
+  ssl: { rejectUnauthorized: false },
   max: 10, // plenty for 500 req/day; tune later if needed
   idleTimeoutMillis: 30_000,
   connectionTimeoutMillis: 5_000,
