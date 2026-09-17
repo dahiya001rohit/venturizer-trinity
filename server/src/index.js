@@ -22,9 +22,8 @@ app.use(cors({
   origin: [
     process.env.FRONTEND_URL,
     "https://trinity-nine.vercel.app",
-    "http://localhost:3000",
-    "http://localhost:5173",
-    "http://localhost:5174",
+    // Any localhost port in dev — Vite hops to 5174/5175/5176... when one is taken.
+    ...(env.NODE_ENV === "production" ? [] : [/^http:\/\/(localhost|127\.0\.0\.1):\d+$/]),
   ].filter(Boolean),
   credentials: true,
   methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
