@@ -70,7 +70,7 @@ export function LeadsList() {
 
   return (
     <DashboardLayout>
-      <div className="sticky top-0 z-10 bg-[#0A0A0A]">
+      <div className="sticky z-10 bg-[#0A0A0A]" style={{ top: 'var(--banner-height)' }}>
         <div className="px-4 md:px-8 pt-8 pb-5 border-b border-white/[0.06]">
           <div className="mb-1">
             <span className="font-inter text-[11px] text-[#333] tracking-[0.06em] uppercase">Leads</span>

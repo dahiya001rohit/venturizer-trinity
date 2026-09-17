@@ -57,6 +57,20 @@
   box-sizing: border-box;
 }
 
+:root {
+  --banner-height: 0px;
+}
+
+:root[data-banner-visible="true"] {
+  --banner-height: 54px;
+}
+
+@media (min-width: 768px) {
+  :root[data-banner-visible="true"] {
+    --banner-height: 38px;
+  }
+}
+
 html {
   background-color: #0A0A0A;
   color: #FFFFFF;

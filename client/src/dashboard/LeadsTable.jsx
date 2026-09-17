@@ -46,6 +46,8 @@ export function LeadsTable({ leads, loading }) {
         <thead>
           <tr className="border-b border-white/[0.06]">
             {['Name', 'Type', 'Score', 'Bucket', 'Status', 'Flags', 'Date'].map(col => (
+              // top-0, not --banner-height: overflow-x-auto makes the wrapper the
+              // scrollport, and it already starts below the banner.
               <th
                 key={col}
                 className="font-inter text-[10px] text-[#555] tracking-widest uppercase text-left px-5 py-3.5 font-medium whitespace-nowrap bg-[#0A0A0A]/80 backdrop-blur-sm sticky top-0"

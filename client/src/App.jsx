@@ -15,6 +15,8 @@ import { DashboardLayout } from './dashboard/DashboardLayout'
 import { ChatPage } from './chat/ChatPage'
 import { FloatingBubble } from './chat/FloatingBubble'
 import { AuthProvider, useAuth } from './AuthContext'
+import { BannerProvider } from './BannerContext'
+import { AnnouncementBanner } from './components/AnnouncementBanner'
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -54,20 +56,23 @@ function ComingSoon({ title }) {
 
 export function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <div style={{ backgroundColor: '#0A0A0A', minHeight: '100vh' }}>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signin" element={<Navigate to="/login" replace />} />
-            <Route path="/dashboard" element={<ProtectedRoute><Overview /></ProtectedRoute>} />
-            <Route path="/dashboard/leads" element={<ProtectedRoute><LeadsList /></ProtectedRoute>} />
-            <Route path="/dashboard/leads/:id" element={<ProtectedRoute><LeadDetail /></ProtectedRoute>} />
-            <Route path="/chat" element={<ChatPage />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </AuthProvider>
+    <BannerProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <div style={{ backgroundColor: '#0A0A0A', minHeight: '100vh', paddingTop: 'var(--banner-height)' }}>
+            <AnnouncementBanner />
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signin" element={<Navigate to="/login" replace />} />
+              <Route path="/dashboard" element={<ProtectedRoute><Overview /></ProtectedRoute>} />
+              <Route path="/dashboard/leads" element={<ProtectedRoute><LeadsList /></ProtectedRoute>} />
+              <Route path="/dashboard/leads/:id" element={<ProtectedRoute><LeadDetail /></ProtectedRoute>} />
+              <Route path="/chat" element={<ChatPage />} />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </AuthProvider>
+    </BannerProvider>
   )
 }

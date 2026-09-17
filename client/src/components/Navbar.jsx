@@ -22,8 +22,9 @@ export function Navbar() {
   return (
     <>
       <div 
-        className={`fixed top-0 inset-x-0 h-24 z-40 pointer-events-none transition-opacity duration-500 ${scrolled ? 'opacity-100' : 'opacity-0'}`}
+        className={`fixed inset-x-0 h-24 z-40 pointer-events-none transition-opacity duration-500 ${scrolled ? 'opacity-100' : 'opacity-0'}`}
         style={{
+          top: 'var(--banner-height)',
           background: 'linear-gradient(to bottom, rgba(10,10,10,1) 0%, rgba(10,10,10,0.8) 40%, rgba(10,10,10,0) 100%)',
           backdropFilter: 'blur(8px)',
           WebkitBackdropFilter: 'blur(8px)',
@@ -31,7 +32,10 @@ export function Navbar() {
           WebkitMaskImage: 'linear-gradient(to bottom, black 20%, transparent 100%)'
         }}
       />
-      <div className="fixed top-6 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+      <div 
+        className="fixed inset-x-0 z-50 flex justify-center px-4 pointer-events-none"
+        style={{ top: 'calc(1.5rem + var(--banner-height))' }}
+      >
         <motion.header
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -107,8 +111,9 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-[76px] inset-x-4 z-[49] rounded-[20px] p-5 flex flex-col gap-3.5"
+            className="fixed inset-x-4 z-[49] rounded-[20px] p-5 flex flex-col gap-3.5"
             style={{
+              top: 'calc(76px + var(--banner-height))',
               backgroundColor: 'rgba(16,16,16,0.96)',
               backdropFilter: 'blur(16px)',
               WebkitBackdropFilter: 'blur(16px)',

@@ -15,7 +15,9 @@ export function ChatPage() {
       <div className="absolute inset-x-0 bottom-0 h-64 z-0 pointer-events-none"
         style={{ background: 'linear-gradient(to top, #0A0A0A, transparent)' }} />
 
-      {/* Sticky Navbar strip with blur */}
+      {/* Sticky Navbar strip with blur.
+          top-0, not --banner-height: the overflow-hidden parent is the scrollport
+          and already starts below the banner (App pads by --banner-height). */}
       <div className="sticky top-0 z-50 flex items-center justify-between px-8 py-5 shrink-0 backdrop-blur-md bg-[#0A0A0A]/70 border-b border-white/[0.05]">
         <Link
           to="/"
